@@ -1,0 +1,13 @@
+bee api schoolCase
+cd go/src/schoolCase 
+rm -rf models/*
+rm -rf controllers/*
+go mod init
+code .
+bee generate scaffold Students -fields="Cpf:string,Name:string,Email:string,Phone:string,BirthDate:time"
+bee generate scaffold Registrations -fields="RegisterDate:string"
+bee generate scaffold Classes -fields="StartDate:string,FinishDate:string,Workload:int16"
+bee generate scaffold Courses -fields="Name:string,Requisites:string,Workload:int16,Price:float64"
+bee generate scaffold Instructors -fields="Name:string,Email:string,HourPrice:float64,Certificates:string"
+go get
+bee run -downdoc=true -gendoc=true
